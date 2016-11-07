@@ -1,0 +1,23 @@
+<md-sidenav-layout>
+
+	<md-sidenav #sidenav mode="side" class="app-sidenav">
+		Sidenav
+	</md-sidenav>
+
+	<md-toolbar color="primary">
+		<button md-button (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button> 项目组App
+
+		<button md-button routerLink="/home">主页</button>
+		<button md-button routerLink="/dinner">订餐计划</button>
+		<button md-button routerLink="/doc">开发者文档</button>
+		<button md-button routerLink="/signin" *ngIf="!isLogin">登陆</button>
+		<button md-button routerLink="/signup" *ngIf="!isLogin">注册</button>
+		<button md-button *ngIf="isLogin">登出</button>
+
+	</md-toolbar>
+
+	<router-outlet></router-outlet>
+
+</md-sidenav-layout>

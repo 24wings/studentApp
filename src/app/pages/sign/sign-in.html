@@ -1,0 +1,26 @@
+<!--登陆面板-->
+
+
+<md-card>
+	<md-input autocomplete="off" dividerColor="primary" #registerUsername placeholder="用户名" maxLength="100" [(ngModel)]="user.username"
+		style="width:100%">
+		<md-hint align="end">{{registerUsername.characterCount}}/10</md-hint>
+	</md-input>
+	<md-input autocomplete="off" divideColor="accent" #registerPassword type="password" placeholder="密码" maxLength="100" [(ngModel)]="user.password"
+		style="width:100%">
+		<md-hint align="end">{{registerPassword.characterCount}}/10</md-hint>
+	</md-input>
+
+	<md-grid-list cols="4">
+
+		<md-grid-tile colspan="1">
+			<md-checkbox [(ngModel)]="remeberMe" align="start">记住我</md-checkbox>
+		</md-grid-tile>
+		<md-grid-tile colspane="1"></md-grid-tile>
+
+		<md-grid-tile colspan="2">
+			<button md-raised-button color="primary" align="end" (click)="signIn()">登陆</button><button md-raised-button color="accent"
+				align="end" (click)="signTab.selectedIndex=1">注册</button>
+		</md-grid-tile>
+	</md-grid-list>
+</md-card>

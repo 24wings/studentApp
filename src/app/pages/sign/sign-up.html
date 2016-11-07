@@ -1,0 +1,40 @@
+<md-card>
+	<md-input autocomplete="off" dividerColor="primary" floatingPlaceholder="true" #nameInput placeholder="用户名" maxLength="100"
+		[(ngModel)]="user.username" style="width:100%">
+		<md-hint align="end">{{nameInput.characterCount}}/10</md-hint>
+	</md-input>
+	<md-input autocomplete="off" divideColor="accent" #passwordInput type="password" placeholder="密码" maxLength="100" [(ngModel)]="user.password"
+		style="width:100%">
+		<md-hint align="end">{{passwordInput.characterCount}}/10</md-hint>
+	</md-input>
+	<md-input autocomplete="off" divideColor="accent" [(ngModel)]="repeatPassword" #repeatPasswordInput type="password" (blur)="repeatCheck(repeatPasswordInput.value)"
+		placeholder="验证密码" maxLength="100" style="width:100%">
+		<md-hint align="end">{{repeatPasswordInput.characterCount}}/10</md-hint>
+	</md-input>
+	<md-card>
+		性别:
+		<md-radio-group [(ngModel)]="user.gender">
+			<md-radio-button value="男">男</md-radio-button>
+			<md-radio-button value="女">女</md-radio-button>
+		</md-radio-group>
+	</md-card>
+	<md-card>
+		项目组:
+		<md-radio-group [(ngModel)]="user.group">
+			<md-radio-button *ngFor="let group of optionGroups" [value]="group">
+				{{group}}
+			</md-radio-button>
+
+		</md-radio-group>
+	</md-card>
+	<md-input autocomplete="off" divideColor="accent" #studentNoInput type="text" placeholder="学号" maxLength="100" [(ngModel)]="user.studentNo"
+		style="width:100%">
+		<md-hint align="end">{{studentNoInput.characterCount}}/10</md-hint>
+	</md-input>
+	<md-grid-list cols="4">
+		<md-grid-tile colspan="3"></md-grid-tile>
+		<md-grid-tile colspan="1">
+			<button md-raised-button color="accent" align="end" (click)="signUp()">注册</button>
+		</md-grid-tile>
+	</md-grid-list>
+</md-card>

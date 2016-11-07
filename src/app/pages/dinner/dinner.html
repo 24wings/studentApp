@@ -1,0 +1,32 @@
+<!--没有登陆的情况下,查看所有人当天订餐计划-->
+<md-list class="dinner-list" *ngIf="!isLogin">
+    <md-list-item>
+        <h3 md-line>订餐计划表:{{toDay.year+"年"+toDay.month+"月"+toDay.date+"日"}}</h3>
+    </md-list-item>
+    <md-list-item>
+        <md-checkbox [disabled]="true" class="isNeed">是否订餐</md-checkbox><span class="username">订餐用户</span>
+    </md-list-item>
+    <md-list-item *ngFor="let dinner of todayDinners | async ">
+        <md-checkbox [checked]="dinner.need" [disabled]="true" class="isNeed">
+            想要
+        </md-checkbox>
+        <span class="username">{{dinner.username}}</span>
+    </md-list-item>
+</md-list>
+
+<!--已经登陆的情况下查看和修改个人当天的订餐计划-->
+
+<md-list *ngIf="isLogin" class="dinner-list">
+    <md-list-item>
+        <h3 md-line>订餐计划:{{toDay.year+"年"+toDay.month+"月"+toDay.date+"日"}}</h3>
+    </md-list-item>
+    <md-list-item>
+        <md-checkbox class="isNeed" [checked]="false" [disabled]="true">有意订餐吗</md-checkbox><span class="username">订餐用户</span>
+    </md-list-item>
+    <md-list-item *ngFor="let dinner of todayDinners | async">
+        <div *ngIf="dinner.username==username">
+            <md-checkbox class="isNeed">想要</md-checkbox><span class="username ">{{username}}</span>
+        </div>
+    </md-list-item>
+
+</md-list>
