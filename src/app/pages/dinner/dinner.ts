@@ -25,9 +25,6 @@ export class DinnerComponent implements OnDestroy {
             this.username = this.userService.user.username;
         }
         this.toDayMyDinner();
-
-
-
     }
     toDayMyDinner() {
 
